@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import ImageSlider, { Slide } from "react-auto-image-slider";
 export default function GamesDetails() {
-  let [gamesDataDetails, setGamesDataDetails] = useState(null);
+  const [gamesDataDetails, setGamesDataDetails] = useState("");
   const { gameId } = useParams();
   const [isLoading, setisLoading] = useState(false);
 
@@ -16,9 +16,7 @@ export default function GamesDetails() {
     setisLoading(true);
     let response = await getGameDetails(gameId)
       .then((res) => {
-        console.log(res);
         setGamesDataDetails(res.data);
-        console.log(gamesDataDetails);
         setisLoading(false);
       })
       .catch((error) => {
@@ -72,10 +70,11 @@ export default function GamesDetails() {
             <div className="min-sys-req">
               <h4>Minimum System Requirements</h4>
               <ul>
-                {Object.keys(gamesDataDetails.minimum_system_requirements).map(
-                  (oneKey, i, value) => {
-                    return (
-                      <>
+                {gamesDataDetails.minimum_system_requirements
+                  ? Object.keys(
+                      gamesDataDetails.minimum_system_requirements
+                    ).map((oneKey, i, value) => {
+                      return (
                         <li key={i}>
                           <span className="h6"> {value[i]} : </span>
                           <span>
@@ -86,38 +85,38 @@ export default function GamesDetails() {
                             }
                           </span>
                         </li>
-                      </>
-                    );
-                  }
-                )}
+                      );
+                    })
+                  : null}
               </ul>
             </div>
-            <div className="overWatchScreen">
-              <h3>Over watched screens</h3>
-              <div className="image-slider">
-                <ImageSlider
-                  className="w-50"
-                  effectDelay={500}
-                  autoPlayDelay={2000}
-                >
-                  {Object.keys(gamesDataDetails.screenshots).map(
-                    (oneKey, i) => {
-                      return (
-                        <>
-                          <Slide>
+            {gamesDataDetails.screenshots ? (
+              <div className="overWatchScreen">
+                <h3>Over watched screens</h3>
+                <div className="image-slider">
+                  <ImageSlider
+                    className="w-50"
+                    effectDelay={500}
+                    autoPlayDelay={2000}
+                  >
+                    {Object.keys(gamesDataDetails.screenshots).map(
+                      (oneKey, i) => {
+                        return (
+                          <Slide key={i}>
                             <img
                               className="w-50"
                               src={gamesDataDetails.screenshots[oneKey].image}
                               alt={gamesDataDetails.title}
                             />
                           </Slide>
-                        </>
-                      );
-                    }
-                  )}
-                </ImageSlider>
+                        );
+                      }
+                    )}
+                  </ImageSlider>
+                </div>
               </div>
-            </div>
+            ) : null}
+
             <Link to="/Home"></Link>
           </div>
         </div>

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&family=Source+Sans+Pro&family=Xanh+Mono:ital@1&display=swap");
+
 :root {
   --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
     rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
@@ -51,13 +52,25 @@ nav {
   background-color: #fff;
   padding: 1rem;
 }
-
+.text-dark {
+  color: var(--main-color-dark) !important;
+}
+.text-light {
+  color: var(--main-color-light) !important;
+}
 /* navbar */
 .website-name-logo {
   font-family: "Xanh Mono", monospace !important;
 }
 .navbar-brand img {
   width: 15%;
+}
+/* login */
+.register-bg-img {
+  background-image: url("./assets/images/gaming.ebaf2ffc84f4451d.jpg");
+  background-size: 100% 100%;
+
+  background-color: #ccc;
 }
 /* game cards */
 .badge-secondary {

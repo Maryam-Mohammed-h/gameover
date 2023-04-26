@@ -7,12 +7,11 @@ export default function AllGames() {
   const { type, value } = useParams();
   const location = useLocation();
   let path = location.pathname;
-
   let { getGames } = useContext(gameContext);
   if (path === "/games/all") {
     path = "all";
   } else {
-    path = location.pathname;
+    path = location.hash;
   }
 
   async function getGamesData(path, type, value) {
