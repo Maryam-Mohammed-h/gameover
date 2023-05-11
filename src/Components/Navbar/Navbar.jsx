@@ -254,7 +254,10 @@ export default function Navbar({ userData, logout }) {
               ) : (
                 <>
                   <li className="nav-item">
-                    <span onClick={logout} className="nav-link cursor-pointer">
+                    <span
+                      onClick={logout}
+                      className="nav-link  text-info btn btn-outline-info cursor-pointer"
+                    >
                       Logout
                     </span>
                   </li>

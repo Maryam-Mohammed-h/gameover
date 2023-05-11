@@ -16,7 +16,7 @@ export default function GamesDetails() {
     setisLoading(true);
     let response = await getGameDetails(gameId)
       .then((res) => {
-        setGamesDataDetails(res.data);
+        setGamesDataDetails(res?.data);
         setisLoading(false);
       })
       .catch((error) => {
@@ -34,12 +34,19 @@ export default function GamesDetails() {
         <title>Game Details</title>
       </Helmet>
       {isLoading ? (
-        <div className="lds-facebook d-flex justify-content-between w-100">
-          <i>
-            <img src={triangle} alt="triangle" />
-          </i>
-          <i className="fa-solid fa-circle fa-3x text-danger"></i>
-          <i className="fa-regular fa-square fa-3x text-warning"></i>
+        <div className=" ">
+          <div
+            className="loader__wrap"
+            role="alertdialog"
+            aria-busy="true"
+            aria-live="polite"
+            aria-label="Loading…"
+          >
+            <div className="loader" aria-hidden="true">
+              <div className="loader__sq"></div>
+              <div className="loader__sq"></div>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="gameDetailsContainer row text-white justify-content-center">
