@@ -14,7 +14,8 @@ export default function Register() {
     setisLoading(true);
 
     let { data } = await axios
-      .post("https://route-ecommerce.onrender.com/api/v1/auth/signup", values)
+      // .post("https://route-ecommerce.onrender.com/api/v1/auth/signup", values)
+      .post("https://ecommerce.routemisr.com",values)
       .catch((error) => {
         setisLoading(false);
         setmessageError(`${error.response.data.message}`);

@@ -53,11 +53,11 @@ export default function GamesDetails() {
           <div className="col-4 py-3 ">
             <img
               className="w-100 rounded-2 "
-              src={gamesDataDetails.thumbnail}
-              alt={gamesDataDetails.title}
+              src={gamesDataDetails?.thumbnail}
+              alt={gamesDataDetails?.title}
             />
             <div className=" game-image-btn d-flex justify-content-center">
-              <Link to={gamesDataDetails.game_url} className="w-100">
+              <Link to={gamesDataDetails?.game_url} className="w-100">
                 <span className="badge bg-secondary p-3 mt-1 h2"> Free</span>
                 <button className="btn btn-primary rounded-3 w-75 p-2  ms-1">
                   <span className="font-weight-bold">Play now</span>{" "}
@@ -68,25 +68,25 @@ export default function GamesDetails() {
           </div>
           <div className="col-8 py-4 game-text">
             <div className="gameTitle">
-              <h2>{gamesDataDetails.title}</h2>
-              <h4> About {gamesDataDetails.title}</h4>
+              <h2>{gamesDataDetails?.title}</h2>
+              <h4> About {gamesDataDetails?.title}</h4>
             </div>
             <div className="gameDesc">
-              <p className="">{gamesDataDetails.description}</p>
+              <p className="">{gamesDataDetails?.description}</p>
             </div>
             <div className="min-sys-req">
               <h4>Minimum System Requirements</h4>
               <ul>
-                {gamesDataDetails.minimum_system_requirements
+                {gamesDataDetails?.minimum_system_requirements
                   ? Object.keys(
-                      gamesDataDetails.minimum_system_requirements
+                      gamesDataDetails?.minimum_system_requirements
                     ).map((oneKey, i, value) => {
                       return (
                         <li key={i}>
                           <span className="h6"> {value[i]} : </span>
                           <span>
                             {
-                              gamesDataDetails.minimum_system_requirements[
+                              gamesDataDetails?.minimum_system_requirements[
                                 oneKey
                               ]
                             }
@@ -97,7 +97,7 @@ export default function GamesDetails() {
                   : null}
               </ul>
             </div>
-            {gamesDataDetails.screenshots ? (
+            {gamesDataDetails?.screenshots ? (
               <div className="overWatchScreen">
                 <h3>Over watched screens</h3>
                 <div className="image-slider">
@@ -106,14 +106,14 @@ export default function GamesDetails() {
                     effectDelay={500}
                     autoPlayDelay={2000}
                   >
-                    {Object.keys(gamesDataDetails.screenshots).map(
+                    {Object.keys(gamesDataDetails?.screenshots).map(
                       (oneKey, i) => {
                         return (
                           <Slide key={i}>
                             <img
                               className="w-50"
-                              src={gamesDataDetails.screenshots[oneKey].image}
-                              alt={gamesDataDetails.title}
+                              src={gamesDataDetails?.screenshots[oneKey].image}
+                              alt={gamesDataDetails?.title}
                             />
                           </Slide>
                         );
